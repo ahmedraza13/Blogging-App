@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
-import { collection, addDoc, getFirestore, onSnapshot, deleteDoc, doc, updateDoc  } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
-const firebaseConfig = {
+  const firebaseConfig = {
     apiKey: "AIzaSyAT0YVJNwknSosC1Qz0PcnzK4Ui_AcpgbY",
     authDomain: "smit-project-934e8.firebaseapp.com",
     projectId: "smit-project-934e8",
@@ -13,7 +12,6 @@ const firebaseConfig = {
   
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-  const db = getFirestore(app);
 
 
 
@@ -29,8 +27,7 @@ window.signUp = function () {
     // Signed in 
     const user = userCredential.user;
     Swal.fire('User Created Successfully')
-   
-       
+  })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -48,7 +45,6 @@ window.logIn = function () {
       // Signed in 
       const user = userCredential.user;
       Swal.fire('Login Successfull')
-      window.location.href = "profile.html"
       // ...
     })
     .catch((error) => {
