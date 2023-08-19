@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
-  const firebaseConfig = {
+import { collection, addDoc, getFirestore, onSnapshot, deleteDoc, doc, updateDoc  } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";  
+const firebaseConfig = {
     apiKey: "AIzaSyAT0YVJNwknSosC1Qz0PcnzK4Ui_AcpgbY",
     authDomain: "smit-project-934e8.firebaseapp.com",
     projectId: "smit-project-934e8",
@@ -12,6 +13,7 @@ import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword } 
   
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getFirestore(app);
 
 
 
@@ -45,6 +47,7 @@ window.logIn = function () {
       // Signed in 
       const user = userCredential.user;
       Swal.fire('Login Successfull')
+      window.location.href = "./dashboard.html"
       // ...
     })
     .catch((error) => {
@@ -54,3 +57,20 @@ window.logIn = function () {
     });
   
 }
+
+window.addpost = async() => {
+   
+ let postTitle = document.getElementById("author-name")
+ let postText = document.getElementById("post-text")
+ let date = new Date()
+  try {
+      const docRef = await addDoc(collection(db, "post"), {
+        postTitle: postTitle.value,
+        postText: postText.value,
+        time: date.toLocaleString()
+      });
+    
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
