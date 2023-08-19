@@ -2,13 +2,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebas
 import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
 import { collection, addDoc, getFirestore, onSnapshot, deleteDoc, doc, updateDoc  } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";  
 const firebaseConfig = {
-    apiKey: "AIzaSyAT0YVJNwknSosC1Qz0PcnzK4Ui_AcpgbY",
-    authDomain: "smit-project-934e8.firebaseapp.com",
-    projectId: "smit-project-934e8",
-    storageBucket: "smit-project-934e8.appspot.com",
-    messagingSenderId: "112854163095",
-    appId: "1:112854163095:web:0bdd7e00fd5af613ae53d2"
-  };
+  apiKey: "AIzaSyA413Zp8wihsRluwTCjqh4rug3ZIj0KBDk",
+  authDomain: "blogging-app-e5396.firebaseapp.com",
+  projectId: "blogging-app-e5396",
+  storageBucket: "blogging-app-e5396.appspot.com",
+  messagingSenderId: "895772502350",
+  appId: "1:895772502350:web:a6d4132362359b0390161f"
+};
 
   
   const app = initializeApp(firebaseConfig);
@@ -61,7 +61,7 @@ window.logIn = function () {
 
 window.addpost = async() => {
    
-  
+ 
  let postTitle = document.getElementById("author-name")
  let postText = document.getElementById("post-text")
  let date = new Date()
@@ -70,7 +70,7 @@ window.addpost = async() => {
         postTitle: postTitle.value,
         postText: postText.value,
         time: date.toLocaleString()
-      });
+       });
     
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -100,8 +100,8 @@ window.addpost = async() => {
           
           // Set the content of the card
           card.innerHTML = `
-            <h2>${postTitle}</h2>
-            <p>${postText}</p>
+            <h2>PostTitle: ${postTitle}</h2>
+            <p>PostText: ${postText}</p>
           `;
     
           // Append the card to the post container
